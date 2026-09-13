@@ -123,6 +123,7 @@ section {
 }
 
 section h2 {
+  position: relative;
   max-width: 620px;
   margin: 0 0 24px;
   color: var(--ink);
@@ -131,15 +132,13 @@ section h2 {
   letter-spacing: -0.04em;
 }
 
-section h2::before {
+section h2::after {
   display: block;
-  margin-bottom: 16px;
-  color: var(--coral);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  content: '/// SYSTEM MODULE';
+  width: 112px;
+  height: 2px;
+  margin-top: 22px;
+  background: linear-gradient(90deg, var(--coral), var(--cyan), transparent);
+  content: '';
 }
 
 section p {
@@ -183,6 +182,86 @@ section p {
 .hero-section p { max-width: 540px; margin: 28px 0 34px; font-size: 1.18rem; }
 .hero-content { animation: content-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+.hero-drawing {
+  width: min(100%, 360px);
+  margin-top: 30px;
+  opacity: 0.78;
+}
+.hero-drawing svg,
+.skills-drawing svg { display: block; width: 100%; height: auto; }
+.hero-drawing path,
+.hero-drawing rect,
+.skills-drawing circle,
+.skills-drawing path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.drawing-cyan { stroke: var(--cyan); stroke-width: 1.4; }
+.drawing-coral { stroke: var(--coral); stroke-width: 1; stroke-dasharray: 3 7; }
+.drawing-node { fill: var(--surface-strong); stroke-width: 1.5; }
+.drawing-node-cyan { stroke: var(--cyan); }
+.drawing-node-coral { stroke: var(--coral); }
+.drawing-node-lime { stroke: var(--lime); }
+.drawing-frame { stroke: rgba(118, 245, 232, 0.42); stroke-width: 1; }
+.drawing-grid { stroke: rgba(118, 245, 232, 0.38); stroke-width: 1; }
+
+.skills-drawing {
+  position: absolute;
+  top: 92px;
+  right: 0;
+  width: 180px;
+  opacity: 0.58;
+  pointer-events: none;
+}
+.orbit { stroke: rgba(118, 245, 232, 0.7); stroke-width: 1; stroke-dasharray: 2 6; }
+.orbit-two { stroke: rgba(255, 128, 107, 0.7); stroke-dasharray: 1 5; }
+.orbit-line { stroke: rgba(212, 245, 108, 0.42); stroke-width: 1; }
+.orbit-core { fill: var(--surface-strong); stroke: var(--cyan); stroke-width: 2; }
+.orbit-dot { fill: var(--surface-strong); stroke-width: 1.5; }
+.orbit-dot-coral { stroke: var(--coral); }
+.orbit-dot-lime { stroke: var(--lime); }
+
+.about-drawing,
+.contact-drawing {
+  position: absolute;
+  top: 104px;
+  right: 0;
+  width: 210px;
+  opacity: 0.82;
+  pointer-events: none;
+}
+.about-drawing svg,
+.contact-drawing svg { display: block; width: 100%; height: auto; overflow: visible; }
+.about-drawing path,
+.about-drawing rect,
+.about-drawing circle,
+.contact-drawing path,
+.contact-drawing circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.about-line { stroke-width: 1.5; stroke-dasharray: 2 6; }
+.about-line-cyan { stroke: var(--cyan); }
+.about-line-coral { stroke: var(--coral); }
+.about-box { stroke: var(--cyan); stroke-width: 1.5; filter: drop-shadow(0 0 5px rgba(118, 245, 232, 0.6)); }
+.about-box-lime { stroke: var(--lime); }
+.about-box-coral { stroke: var(--coral); }
+.about-pulse { fill: rgba(118, 245, 232, 0.18) !important; stroke: var(--cyan); stroke-width: 2; animation: signal-pulse 2.4s ease-in-out infinite; }
+.about-dot { fill: var(--surface-strong) !important; stroke-width: 1.5; }
+.about-dot-cyan { stroke: var(--cyan); }
+.about-dot-lime { stroke: var(--lime); }
+.contact-wave { stroke-width: 1.5; }
+.contact-wave-cyan { stroke: var(--cyan); filter: drop-shadow(0 0 4px rgba(118, 245, 232, 0.7)); }
+.contact-wave-coral { stroke: var(--coral); stroke-dasharray: 3 6; }
+.contact-node { fill: var(--surface-strong) !important; stroke-width: 2; }
+.contact-node-cyan { stroke: var(--cyan); }
+.contact-node-coral { stroke: var(--coral); }
+.contact-node-lime { stroke: var(--lime); }
+.contact-signal { stroke: var(--lime); stroke-width: 1; opacity: 0.8; }
+.hero-section::after {
+  position: absolute;
+  right: 0;
+  bottom: 34px;
+  width: 42%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), var(--cyan));
+  content: '';
+}
+
 .cta-button {
   display: inline-flex;
   align-items: center;
@@ -215,6 +294,8 @@ section p {
 .profile-img-container { animation: profile-float 5s ease-in-out 700ms infinite; }
 
 .audio-container {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -224,11 +305,24 @@ section p {
   border-left: 2px solid var(--coral);
   background: rgba(16, 39, 44, 0.58);
 }
+.audio-container::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 34%;
+  height: 100%;
+  pointer-events: none;
+  content: '';
+  background: repeating-linear-gradient(0deg, transparent 0 8px, rgba(118, 245, 232, 0.05) 9px 10px);
+  opacity: 0.7;
+}
 .audio-label { margin: 0; color: var(--cyan); font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; white-space: nowrap; }
 audio { width: min(100%, 420px); height: 34px; filter: sepia(1) saturate(0.4) hue-rotate(130deg); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
 .skill-card {
+  position: relative;
+  overflow: hidden;
   min-height: 250px;
   padding: 26px;
   border: 1px solid var(--line);
@@ -236,7 +330,26 @@ audio { width: min(100%, 420px); height: 34px; filter: sepia(1) saturate(0.4) hu
   background: linear-gradient(160deg, rgba(16, 39, 44, 0.9), rgba(10, 23, 27, 0.74));
   transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
 }
-.skill-card::before { display: block; margin-bottom: 42px; color: var(--coral); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; content: 'CAPABILITY / 0' attr(data-index); }
+.skill-card::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan));
+  content: '';
+  opacity: 0.65;
+}
+.skill-card::after {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--lime);
+  content: '';
+  box-shadow: 0 0 14px rgba(212, 245, 108, 0.5);
+}
 .skill-card:nth-child(2) { border-top-color: var(--coral); }
 .skill-card:nth-child(3) { border-top-color: var(--lime); }
 .skill-card { animation: card-rise 650ms cubic-bezier(0.22, 1, 0.36, 1) both; }
@@ -246,7 +359,9 @@ audio { width: min(100%, 420px); height: 34px; filter: sepia(1) saturate(0.4) hu
 .skill-card h3 { margin: 0 0 12px; color: var(--ink); font-size: 1.65rem; }
 .skill-card p { margin: 0; font-size: 0.95rem; line-height: 1.65; }
 
-.contact-links { display: grid; gap: 14px; padding: 0; margin: 34px 0 0; list-style: none; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.86rem; }
+.contact-links { display: grid; gap: 14px; padding: 4px 0 4px 20px; margin: 34px 0 0; border-left: 1px solid var(--line); list-style: none; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.86rem; }
+.contact-links li { position: relative; }
+.contact-links li::before { position: absolute; top: 0.45em; left: -25px; width: 8px; height: 8px; border: 1px solid var(--coral); background: var(--surface-strong); content: ''; box-shadow: 0 0 10px rgba(255, 128, 107, 0.45); }
 .contact-links a { color: var(--cyan); text-decoration: none; text-underline-offset: 4px; }
 .contact-links a:hover, .contact-links a:focus-visible { color: var(--coral); text-decoration: underline; }
 :focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
@@ -282,8 +397,12 @@ audio { width: min(100%, 420px); height: 34px; filter: sepia(1) saturate(0.4) hu
   .hero-section { grid-template-columns: 1fr; gap: 44px; min-height: auto; padding-top: 96px; }
   .hero-section::before { display: none; }
   .hero-section > div:first-of-type { justify-self: start; }
+  .hero-drawing { margin-top: 24px; }
   .media-container { width: min(72vw, 280px); }
   section { padding: 80px 0; }
+  .about-drawing,
+  .contact-drawing { position: relative; top: auto; right: auto; width: 170px; margin: -8px 0 24px auto; opacity: 0.72; }
+  .skills-drawing { position: relative; top: auto; right: auto; width: 140px; margin: -8px 0 20px auto; opacity: 0.5; }
   .skills-grid { grid-template-columns: 1fr; }
   .audio-container { align-items: flex-start; flex-direction: column; }
 }
@@ -291,16 +410,50 @@ audio { width: min(100%, 420px); height: 34px; filter: sepia(1) saturate(0.4) hu
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.9); transform-origin: center; }
+  50% { opacity: 1; transform: scale(1.15); }
+}
 .profile-img-container {
+  position: relative;
+  width: min(100%, 340px);
+  aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--cyan);
+  background:
+    linear-gradient(135deg, rgba(118, 245, 232, 0.12), transparent 42%),
+    linear-gradient(315deg, rgba(255, 128, 107, 0.12), transparent 45%),
+    repeating-linear-gradient(90deg, transparent 0 31px, rgba(118, 245, 232, 0.07) 32px 33px);
+  clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 12% 100%, 0 88%);
+}
+.profile-img-container::before {
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(118, 245, 232, 0.36);
+  content: '';
+}
+.profile-img-container::after {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  color: var(--coral);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  content: 'UI / 01';
 }
 
 .profile-img {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 38px);
   width: 280px;
-  height: auto;
-  border-radius: 12px; /* Bordas levemente arredondadas combinam com o estilo moderno da foto */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Cria um sombreamento suave que destaca a foto do fundo do site */
-  border: 2px solid #007acc; /* Opcional: Uma borda fina na cor tema do seu site para emoldurar a imagem */
+  height: 280px;
+  object-fit: cover;
+  border: 1px solid var(--coral);
+  border-radius: 6px;
+  box-shadow: 0 0 28px rgba(118, 245, 232, 0.16), 12px 12px 0 rgba(255, 128, 107, 0.12);
 }
