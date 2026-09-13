@@ -1,9 +1,8 @@
-# Portfólio Profissional - Trabalho P1
+# Portfólio Profissional - Eduardo Fernandes do Nascimento
 
-Projeto de portfólio pessoal desenvolvido para a disciplina de **Laboratório de Programação Front End** do curso de Engenharia de Software da **Univassouras (Campus Saquarema)**.
+Projeto de portfólio pessoal desenvolvido para a disciplina de **Laboratório de Programação Front End**  da **Univassouras (Campus Saquarema)** Aqui faço uma breve descrição das minhas habilidades como desenvolvedor Front-end.
 
 ## 🧑‍💻 Acadêmico
-* **Nome:** Eduardo Fernandes do Nascimento
 * **Curso:** Engenharia de Software
 
 ## 🚀 Tecnologias Utilizadas
@@ -12,10 +11,10 @@ Projeto de portfólio pessoal desenvolvido para a disciplina de **Laboratório d
 * **Vite** (Build tool rápida)
 * **HTML5 Semântico & CSS3**
 
-## 📋 Requisitos Implementados (Critérios de Avaliação)
+## 📋 Requisitos Implementados 
 * **Estrutura Semântica:** Uso de tags `<header>`, `<nav>`, `<main>` e `<section>`.
 * **Navegação Responsiva:** Menu funcional adaptável para dispositivos móveis.
-* **Seções Obrigatórias:** Início, Sobre Mim, Habilidades (mínimo de 3 cards) e Contato.
+* **Seções Obrigatórias:** Início, Sobre Mim, Habilidades (3 cards) e Contato.
 * **Elementos de Mídia:** Inclusão de imagem de perfil tratada e reprodutor de áudio integrado.
 * **Animações CSS:** Animação de pulsação (`@keyframes pulse`) aplicada aos elementos principais da interface.
 
