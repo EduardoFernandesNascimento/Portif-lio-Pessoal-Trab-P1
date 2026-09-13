@@ -5,6 +5,7 @@ import './App.css';
 // IMPORTAÇÃO DA SUA FOTO EDITADA:
 // Certifique-se de salvar a imagem em: src/assets/eduardo-perfil.png
 import fotoEduardo from './assets/eduardo-perfil.png';
+import apresentacaoEduardo from './assets/apresentacao_Eduardo-dev_compat.wav';
 
 interface SkillCard {
   id: number;
@@ -31,7 +32,6 @@ export default function App() {
         </button>
         <nav className={menuOpen ? 'nav-active' : ''}>
           <ul>
-            <li><a href="#inicio" onClick={() => setMenuOpen(false)}>Início</a></li>
             <li><a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a></li>
             <li><a href="#habilidades" onClick={() => setMenuOpen(false)}>Habilidades</a></li>
             <li><a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a></li>
@@ -95,7 +95,7 @@ export default function App() {
           {/* MÍDIA 2 OBRIGATÓRIA: Áudio demonstrativo para cumprir a exigência de mídias de tipos diferentes */}
           <div className="audio-container">
             <p className="audio-label">Apresentação Pessoal em Áudio:</p>
-            <audio controls src="https://soundhelix.com">
+            <audio className="audio-player" controls src={apresentacaoEduardo}>
               Seu navegador não suporta o elemento de áudio.
             </audio>
           </div>
